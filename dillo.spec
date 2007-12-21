@@ -11,6 +11,7 @@ Source1:        http://www.dillo.org/download/%{name}-%{version}.tar.bz2.asc
 URL: 		http://www.dillo.org/
 License: 	GPL
 Group: 		Networking/WWW
+BuildRoot: 	%{_tmppath}/%{name}-buildroot
 Buildrequires:  libgtk+-devel libjpeg-devel libpng-devel zlib-devel fltk-devel openssl-devel
 
 
