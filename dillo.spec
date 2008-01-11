@@ -40,19 +40,6 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%_sysconfdir
 install -m 644 dillorc $RPM_BUILD_ROOT%_sysconfdir/
 
-(cd $RPM_BUILD_ROOT
-mkdir -p ./%{_menudir}
-cat > ./%{_menudir}/%{name} <<EOF
-?package(%{name}):\
-command="%{_bindir}/dillo"\
-title="Dillo"\
-longtitle="A simple web browser"\
-needs="x11"\
-icon="networking_www_section.png"\
-section="Internet/Web Browsers" \
-xdg="true"
-EOF
-
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
@@ -64,7 +51,6 @@ Terminal=false
 Type=Application
 Categories=X-MandrivaLinux-Internet-WebBrowsers;Network;WebBrowser;
 EOF
-)
 
 %post
 %{update_menus}
@@ -79,7 +65,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog* INSTALL NEWS README
 %{_bindir}/*
-%{_menudir}/*
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_libdir}/%{name}/
 %config(noreplace) %_sysconfdir/dillorc
