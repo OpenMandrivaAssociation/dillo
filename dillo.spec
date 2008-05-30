@@ -1,6 +1,6 @@
 %define name    dillo
 %define version 0.8.6
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary: 	GTK+ based web browser
 Name: 		%{name}
@@ -8,11 +8,13 @@ Version: 	%{version}
 Release: 	%{release}
 Source: 	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
 Source1:        http://www.dillo.org/download/%{name}-%{version}.tar.bz2.asc 
+# (cjw) aclocal complains about a line in configure.in that doesn't make sense, so remove the line
+Patch1:		dillo-0.8.6-configure-fix.patch
 URL: 		http://www.dillo.org/
 License: 	GPL
 Group: 		Networking/WWW
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
-Buildrequires:  libgtk+-devel libjpeg-devel libpng-devel zlib-devel fltk-devel openssl-devel
+Buildrequires:  libgtk+-devel libjpeg-devel libpng-devel zlib-devel openssl-devel
 
 
 %description
@@ -24,14 +26,18 @@ no JVM).
 %prep
 
 %setup -q
+%patch1 -p1 -b .subst
+
+%build
+
 aclocal
 autoheader
 autoconf
 automake -a
  
-%configure2_5x --disable-dlgui
+%configure2_5x --disable-dlgui --enable-ipv6
 
-%build
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
