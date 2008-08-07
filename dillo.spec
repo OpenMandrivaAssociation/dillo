@@ -1,6 +1,6 @@
 %define name    dillo
 %define version 0.8.6
-%define release %mkrel 3
+%define release %mkrel 4
 
 Summary: 	GTK+ based web browser
 Name: 		%{name}
