@@ -15,6 +15,7 @@ Buildrequires:	libjpeg-devel
 Buildrequires:	libpng-devel
 Buildrequires:	zlib-devel
 Buildrequires:	openssl-devel
+BuildRequires:	fltk2-devel
 
 %description
 Dillo is a Web browser that's completely written in C, very fast, and small in
