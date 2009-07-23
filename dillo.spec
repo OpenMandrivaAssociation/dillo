@@ -1,6 +1,6 @@
 Summary:	Very fast and light web browser
 Name:		dillo
-Version:	2.0
+Version:	2.1.1
 Release:	%{mkrel 1}
 Source0:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
 Source1:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2.asc 
@@ -27,9 +27,8 @@ renders a subset of HTML (no frames, no JavaScript, and no JVM).
 %setup -q
 
 %build
-%configure2_5x --disable-dlgui --enable-ipv6
+%configure2_5x --enable-ipv6
 
-%make
 %install
 rm -rf %{buildroot}
 %makeinstall_std
@@ -69,5 +68,8 @@ rm -rf %{buildroot}
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_libdir}/%{name}/
 %config(noreplace) %{_sysconfdir}/dillorc
-%config(noreplace) %{_sysconfdir}/dpidrc
+%config(noreplace) %{_sysconfdir}/dillo/dillorc
+%config(noreplace) %{_sysconfdir}/dillo/dpidrc
+%config(noreplace) %{_sysconfdir}/dillo/keysrc
+%{_mandir}/man1/dillo.1*
 
