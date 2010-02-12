@@ -1,7 +1,7 @@
 Summary:	Very fast and light web browser
 Name:		dillo
-Version:	2.1.1
-Release:	%{mkrel 2}
+Version:	2.2
+Release:	%{mkrel 1}
 Source0:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
 Source1:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2.asc 
 # (cjw) aclocal complains about a line in configure.in that doesn't make sense, so remove the line
