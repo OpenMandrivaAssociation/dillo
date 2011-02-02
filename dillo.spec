@@ -1,7 +1,7 @@
 Summary:	Very fast and light web browser
 Name:		dillo
 Version:	2.2
-Release:	%{mkrel 1}
+Release:	%{mkrel 2}
 Source0:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
 Source1:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2.asc 
 # (cjw) aclocal complains about a line in configure.in that doesn't make sense, so remove the line
@@ -14,9 +14,8 @@ BuildRoot:	%{_tmppath}/%{name}-buildroot
 Buildrequires:	libjpeg-devel
 Buildrequires:	libpng-devel
 Buildrequires:	zlib-devel
-Buildrequires:	openssl-devel
 BuildRequires:	fltk2-devel
-BuildRequires:	X11-devel
+BuildRequires:	libx11-devel
 
 %description
 Dillo is a Web browser that's completely written in C, very fast, and small in
