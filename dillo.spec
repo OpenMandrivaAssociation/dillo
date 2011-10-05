@@ -1,9 +1,9 @@
 Summary:	Very fast and light web browser
 Name:		dillo
-Version:	2.2
-Release:	%{mkrel 2}
+Version:	3.0.1
+Release:	%mkrel 1
 Source0:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
-Source1:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2.asc 
+Source1:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2.asc
 # (cjw) aclocal complains about a line in configure.in that doesn't make sense, so remove the line
 #Patch1:		dillo-0.8.6-configure-fix.patch
 URL:		http://www.dillo.org/
@@ -15,6 +15,7 @@ Buildrequires:	libjpeg-devel
 Buildrequires:	libpng-devel
 Buildrequires:	zlib-devel
 BuildRequires:	fltk2-devel
+BuildRequires:	ungif-devel
 BuildRequires:	libx11-devel
 
 %description
@@ -27,6 +28,7 @@ renders a subset of HTML (no frames, no JavaScript, and no JVM).
 
 %build
 %configure2_5x --enable-ipv6
+%make
 
 %install
 rm -rf %{buildroot}
@@ -40,7 +42,7 @@ cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=Dillo
 Comment=A simple web browser
-Exec=%{_bindir}/dillo
+Exec=%{name}
 Icon=networking_www_section
 Terminal=false
 Type=Application
@@ -56,7 +58,7 @@ EOF
 %postun
 %{clean_menus}
 %endif
- 
+
 %clean
 rm -rf %{buildroot}
 
