@@ -14,7 +14,7 @@ BuildRoot:	%{_tmppath}/%{name}-buildroot
 Buildrequires:	libjpeg-devel
 Buildrequires:	libpng-devel
 Buildrequires:	zlib-devel
-BuildRequires:	fltk2-devel
+BuildRequires:	fltk-devel
 BuildRequires:	ungif-devel
 BuildRequires:	libx11-devel
 
