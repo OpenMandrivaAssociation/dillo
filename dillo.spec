@@ -1,20 +1,21 @@
 Summary:	Very fast and light web browser
 Name:		dillo
 Version:	3.0.2
-Release:	%mkrel 1
-Source0:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
-Source1:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2.asc
-URL:		http://www.dillo.org/
+Release:	2
 # The OpenSSL exception is in dpi/https.c - AdamW 2008/12
 License:	GPLv3+ with exceptions
 Group:		Networking/WWW
-BuildRoot:	%{_tmppath}/%{name}-buildroot
-Buildrequires:	libjpeg-devel
-Buildrequires:	libpng-devel
-Buildrequires:	zlib-devel
+URL:		http://www.dillo.org/
+Source0:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
+Source1:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2.asc
 BuildRequires:	fltk-devel
+BuildRequires:	jpeg-devel
 BuildRequires:	ungif-devel
-BuildRequires:	libx11-devel
+BuildRequires:	pkgconfig(cairo)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(pixman-1)
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(zlib)
 
 %description
 Dillo is a Web browser that's completely written in C, very fast, and small in
@@ -29,7 +30,6 @@ renders a subset of HTML (no frames, no JavaScript, and no JVM).
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 mkdir -p %{buildroot}%{_sysconfdir}
@@ -47,11 +47,7 @@ Type=Application
 Categories=Network;WebBrowser;
 EOF
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog* INSTALL NEWS README
 %{_bindir}/*
 %{_datadir}/applications/mandriva-%{name}.desktop
