@@ -56,5 +56,6 @@ EOF
 %config(noreplace) %{_sysconfdir}/dillo/dillorc
 %config(noreplace) %{_sysconfdir}/dillo/dpidrc
 %config(noreplace) %{_sysconfdir}/dillo/keysrc
+%config(noreplace) %{_sysconfdir}/dillo/domainrc
 %{_mandir}/man1/dillo.1*
 
