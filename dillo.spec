@@ -26,7 +26,7 @@ renders a subset of HTML (no frames, no JavaScript, and no JVM).
 %setup -q
 
 %build
-%configure2_5x --enable-ipv6
+%configure --enable-ipv6
 %make
 
 %install
