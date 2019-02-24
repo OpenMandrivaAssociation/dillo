@@ -1,6 +1,6 @@
 Summary:	Very fast and light web browser
 Name:		dillo
-Version:	3.0.4.1
+Version:	3.0.5
 Release:	1
 # The OpenSSL exception is in dpi/https.c - AdamW 2008/12
 License:	GPLv3+ with exceptions
