@@ -55,7 +55,7 @@ Categories=Network;WebBrowser;
 EOF
 
 %files
-%doc AUTHORS ChangeLog* INSTALL NEWS README
+%doc AUTHORS ChangeLog* INSTALL NEWS README user_help.html
 %{_bindir}/*
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_libdir}/%{name}/
