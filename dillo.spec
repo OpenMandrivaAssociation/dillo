@@ -19,6 +19,7 @@ BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(xinerama)
+BuildRequires:	pkgconfig(xft)
 
 %description
 Dillo is a Web browser that's completely written in C, very fast, and small in
