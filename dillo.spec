@@ -1,6 +1,6 @@
 Summary:	Very fast and light web browser
 Name:		dillo
-Version:	3.0.4.1
+Version:	3.0.5
 Release:	1
 # The OpenSSL exception is in dpi/https.c - AdamW 2008/12
 License:	GPLv3+ with exceptions
@@ -16,6 +16,10 @@ BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(openssl)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(xinerama)
+BuildRequires:	pkgconfig(xft)
 
 %description
 Dillo is a Web browser that's completely written in C, very fast, and small in
@@ -26,11 +30,14 @@ renders a subset of HTML (no frames, no JavaScript, and no JVM).
 %setup -q
 
 %build
-%configure --enable-ipv6
-%make
+%configure2_5x \
+	--enable-ipv6 \
+	--enable-ssl
+  
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 mkdir -p %{buildroot}%{_sysconfdir}
 install -m 644 dillorc %{buildroot}%{_sysconfdir}/
@@ -48,7 +55,7 @@ Categories=Network;WebBrowser;
 EOF
 
 %files
-%doc AUTHORS ChangeLog* INSTALL NEWS README
+%doc AUTHORS ChangeLog* INSTALL NEWS README user_help.html
 %{_bindir}/*
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_libdir}/%{name}/
