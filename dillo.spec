@@ -32,7 +32,7 @@ renders a subset of HTML (no frames, no JavaScript, and no JVM).
 %build
 %configure \
 	--enable-ipv6 \
-	--enable-ssl
+	--enable-tls
   
 %make_build
 
