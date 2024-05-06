@@ -1,13 +1,13 @@
 Summary:	Very fast and light web browser
 Name:		dillo
-Version:	3.0.5
+Version:	3.1.0
 Release:	1
 # The OpenSSL exception is in dpi/https.c - AdamW 2008/12
 License:	GPLv3+ with exceptions
 Group:		Networking/WWW
 URL:		http://www.dillo.org/
-Source0:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
-Source1:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2.asc
+#Source0:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
+Source0:	https://github.com/dillo-browser/dillo/releases/download/v%{version}/dillo-%{version}.tar.bz2
 BuildRequires:	fltk-devel
 BuildRequires:	jpeg-devel
 BuildRequires:	ungif-devel
@@ -27,12 +27,12 @@ code base and binary. It is a graphical browser built upon FLTK2 and currently
 renders a subset of HTML (no frames, no JavaScript, and no JVM).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure2_5x \
+%configure \
 	--enable-ipv6 \
-	--enable-ssl
+	--enable-tls
   
 %make_build
 
@@ -58,11 +58,14 @@ EOF
 %doc AUTHORS ChangeLog* INSTALL NEWS README user_help.html
 %{_bindir}/*
 %{_datadir}/applications/mandriva-%{name}.desktop
+%{_datadir}/applications/dillo.desktop
 %{_libdir}/%{name}/
 %config(noreplace) %{_sysconfdir}/dillorc
 %config(noreplace) %{_sysconfdir}/dillo/dillorc
 %config(noreplace) %{_sysconfdir}/dillo/dpidrc
 %config(noreplace) %{_sysconfdir}/dillo/keysrc
 %config(noreplace) %{_sysconfdir}/dillo/domainrc
+%config(noreplace) %{_sysconfdir}/dillo/hsts_preload
+%{_iconsdir}/hicolor/*x*/apps/dillo.png
 %{_mandir}/man1/dillo.1*
 
