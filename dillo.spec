@@ -58,11 +58,14 @@ EOF
 %doc AUTHORS ChangeLog* INSTALL NEWS README user_help.html
 %{_bindir}/*
 %{_datadir}/applications/mandriva-%{name}.desktop
+%{_datadir}/applications/dillo.desktop
 %{_libdir}/%{name}/
 %config(noreplace) %{_sysconfdir}/dillorc
 %config(noreplace) %{_sysconfdir}/dillo/dillorc
 %config(noreplace) %{_sysconfdir}/dillo/dpidrc
 %config(noreplace) %{_sysconfdir}/dillo/keysrc
 %config(noreplace) %{_sysconfdir}/dillo/domainrc
+%config(noreplace) %{_sysconfdir}/dillo/hsts_preload
+%{_iconsdir}/hicolor/*x*/apps/dillo.png
 %{_mandir}/man1/dillo.1*
 
