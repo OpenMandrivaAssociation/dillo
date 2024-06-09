@@ -1,11 +1,11 @@
 Summary:	Very fast and light web browser
 Name:		dillo
-Version:	3.1.0
+Version:	3.1.1
 Release:	1
 # The OpenSSL exception is in dpi/https.c - AdamW 2008/12
 License:	GPLv3+ with exceptions
 Group:		Networking/WWW
-URL:		http://www.dillo.org/
+URL:		https://www.dillo.org/
 #Source0:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
 Source0:	https://github.com/dillo-browser/dillo/releases/download/v%{version}/dillo-%{version}.tar.bz2
 BuildRequires:	fltk-devel
