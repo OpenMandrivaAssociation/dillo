@@ -11,6 +11,9 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	make
 BuildRequires:	fltk-devel
+# FLTK 1.4's fltk-config --ldflags links these; the .so symlinks are not pulled by fltk-devel.
+BuildRequires:	pkgconfig(dbus-1)
+BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	jpeg-devel
 BuildRequires:	ungif-devel
 BuildRequires:	pkgconfig(cairo)
