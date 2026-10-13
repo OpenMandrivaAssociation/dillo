@@ -1,49 +1,49 @@
 Summary:	Very fast and light web browser
 Name:		dillo
-Version:	3.2.0
-Release:	2
-# The OpenSSL exception is in dpi/https.c - AdamW 2008/12
+Version:	3.3.0
+Release:	1
+# The OpenSSL exception is in src/IO/tls_openssl.c
 License:	GPLv3+ with exceptions
 Group:		Networking/WWW
-URL:		https://www.dillo.org/
-#Source0:	http://www.dillo.org/download/%{name}-%{version}.tar.bz2
-Source0:	https://github.com/dillo-browser/dillo/releases/download/v%{version}/dillo-%{version}.tar.bz2
+URL:		https://dillo-browser.org/
+Source0:	https://dillo-browser.org/release/%{version}/dillo-%{version}.tar.gz
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libtool-base
-BuildRequires:	slibtool
 BuildRequires:	make
 BuildRequires:	fltk-devel
 BuildRequires:	jpeg-devel
 BuildRequires:	ungif-devel
 BuildRequires:	pkgconfig(cairo)
+BuildRequires:	pkgconfig(libbrotlidec)
 BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(libwebp)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(openssl)
-BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(xinerama)
+BuildRequires:	pkgconfig(freetype2)
+BuildRequires:	pkgconfig(xinerama)
 BuildRequires:	pkgconfig(xft)
 
 %description
 Dillo is a Web browser that's completely written in C, very fast, and small in
-code base and binary. It is a graphical browser built upon FLTK2 and currently
+code base and binary. It is a graphical browser built upon FLTK and currently
 renders a subset of HTML (no frames, no JavaScript, and no JVM).
 
 %prep
 %autosetup -p1
 
 %build
+# Cooker has FLTK 1.4 only. Upstream still treats that as experimental.
 %configure \
 	--enable-ipv6 \
-	--enable-tls
-  
-# slibtoolize installs an ltmain.sh stub, so ./libtool does not produce libraries.
-%make_build LIBTOOL=slibtool-shared
+	--enable-tls \
+	--enable-experimental-fltk
+
+%make_build
 
 %install
-%make_install LIBTOOL=slibtool-shared
+%make_install
 
 mkdir -p %{buildroot}%{_sysconfdir}
 install -m 644 dillorc %{buildroot}%{_sysconfdir}/
@@ -61,7 +61,8 @@ Categories=Network;WebBrowser;
 EOF
 
 %files
-%doc AUTHORS ChangeLog* INSTALL NEWS README user_help.html
+%doc AUTHORS ChangeLog* INSTALL NEWS README
+%doc %{_docdir}/dillo/user_help.html
 %{_bindir}/*
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_datadir}/applications/dillo.desktop
