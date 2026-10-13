@@ -39,10 +39,11 @@ renders a subset of HTML (no frames, no JavaScript, and no JVM).
 	--enable-ipv6 \
 	--enable-tls
   
-%make_build
+# slibtoolize installs an ltmain.sh stub, so ./libtool does not produce libraries.
+%make_build LIBTOOL=slibtool-shared
 
 %install
-%make_install
+%make_install LIBTOOL=slibtool-shared
 
 mkdir -p %{buildroot}%{_sysconfdir}
 install -m 644 dillorc %{buildroot}%{_sysconfdir}/
